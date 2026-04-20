@@ -1,0 +1,51 @@
+﻿@model TestTask.Models.Person
+
+<div class="container">
+    <h2>Редактирование клиента: @Model.Surname @Model.Name</h2>
+    <hr />
+
+    <form asp-controller="TestTask" asp-action="UpdatePersonDb" method="post">     
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="CreatedDate" />
+
+        <div class="mb-3">
+            <label class="form-label">Фамилия</label>
+            <input asp-for="Surname" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Имя</label>
+            <input asp-for="Name" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Отчество</label>
+            <input asp-for="Patronymic" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Дата рождения</label>
+            <input asp-for="Birthday" type="date" class="form-control"
+                   value="@Model.Birthday.ToString("yyyy-MM-dd")" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Статус клиента</label>
+            <select asp-for="PersonStatusDictId" class="form-select">
+                @if (ViewBag.Statuses != null)
+                {
+                    foreach (var status in ViewBag.Statuses)
+                    {
+                        <option value="@status.Id">@status.Status</option>
+                    }
+                }
+            </select>
+            <span asp-validation-for="PersonStatusDictId" class="text-danger"></span>
+        </div>
+
+        <div class="mt-4">
+            <button type="submit" class="btn btn-success">Сохранить изменения</button>
+            <a asp-action="Index" class="btn btn-secondary">Назад к списку</a>
+        </div>
+    </form>
+</div>

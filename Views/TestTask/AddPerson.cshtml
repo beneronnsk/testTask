@@ -1,0 +1,24 @@
+﻿@model TestTask.Models.Person
+
+<h2>Добавить нового пользователя</h2>
+
+<form asp-controller="TestTask" asp-action="AddPersonDb" method="post">
+    <div>
+        <label>Фамилия</label>
+        <input asp-for="Surname" class="form-control" />
+    </div>
+    <div>
+        <label>Имя</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div>
+        <label>Отчество</label>
+        <input asp-for="Patronymic" class="form-control" />
+    </div>
+    <div>
+        <label>Дата рождения</label>
+        <input asp-for="Birthday" type="date" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
