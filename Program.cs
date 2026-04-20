@@ -8,9 +8,13 @@ namespace testTask
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            var connection = builder.Configuration.GetConnectionString("DbConnection");
+            var connection = builder.Configuration.GetConnectionString("PostGresConnection");
 
-            builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlite(connection) );
+            //builder.Services.AddDbContext<ApplicationContext>(options => options.UseSqlite(connection) );
+            builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connection) );
+
+
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
