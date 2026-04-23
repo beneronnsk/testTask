@@ -7,6 +7,7 @@ namespace TestTask.Database
     {
         public ApplicationContext(DbContextOptions<ApplicationContext> options) : base(options)
         {
+
             Database.EnsureCreated();
         }
 
@@ -30,8 +31,8 @@ namespace TestTask.Database
                 Surname = "Иванов",
                 Name = "Иван",
                 Patronymic = "Иванович",
-                Birthday = new DateTime(2000, 1, 1), 
-                PersonStatusDictId = 1 
+                Birthday = DateTime.SpecifyKind(new DateTime(2000, 1, 1), DateTimeKind.Unspecified),
+                PersonStatusDictId = 1
             });
 
             base.OnModelCreating(modelBuilder);

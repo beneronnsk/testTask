@@ -12,7 +12,9 @@
         @foreach (var h in Model)
         {
             <tr>
-                <td>@h.ChangeDate.ToString("dd.MM.yyyy HH:mm:ss")</td>
+                @* Добавляем .ToLocalTime() здесь *@
+                <td>@h.ChangeDate.ToLocalTime().ToString("dd.MM.yyyy HH:mm:ss")</td>
+
                 <td><span class="badge bg-info text-dark">@h.StatusName</span></td>
             </tr>
         }
